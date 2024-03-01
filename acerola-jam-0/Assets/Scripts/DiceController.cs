@@ -60,20 +60,20 @@ public class DiceController : MonoBehaviour
    
         // These values are hardcoded based on the "roll finishing" anim
         // and other timings. DO NOT CHANGE.
-        yield return new WaitForSecondsRealtime(1.9f);
+        yield return new WaitForSecondsRealtime(1f);
 
         ToggleParticles(effect.neutrality, true);
 
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
         ShowIcon();
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
         SpawnEffect();
         ToggleParticles(effect.neutrality, false);
 
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         isDiceRolling = false;
     }
 

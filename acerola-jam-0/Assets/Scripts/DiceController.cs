@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class DiceController : MonoBehaviour
 {
@@ -12,7 +13,13 @@ public class DiceController : MonoBehaviour
     private bool isDiceRolling = false;
     private Animator animator;
     [SerializeField] private SpriteRenderer effectSprite;
-    [SerializeField] Sprite[] effectSprites;
+    [SerializeField] GameObject[] effects;
+    [SerializeField] private GameObject goodParticles;
+    [SerializeField] private GameObject neutralParticles;
+
+
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
 
     void Awake()
     {
@@ -28,14 +35,16 @@ public class DiceController : MonoBehaviour
         if (isDiceRolling)
             return;
 
-        effectSprite.enabled = false;
         isDiceRolling = true;
+        effectSprite.enabled = false;
         animator.Play("Roll");
     }
 
     private void RollDice()
     {
-        if (!isDiceRolling)
+        // If the dice is not rolling, or the current animator clip isnt roll,
+        // then we cannot end the roll.
+        if (!isDiceRolling || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Roll")
             return;
 
         animator.Play("roll finishing");
@@ -44,19 +53,68 @@ public class DiceController : MonoBehaviour
 
     IEnumerator CanRollDiceAgain()
     {
+        // Choose effect
+        int i = UnityEngine.Random.Range(0, effects.Length);
+        Effect effect = effects[i].GetComponent<Effect>();
+        int neutrality = effect.neutrality;
+    
         // TODO: add another condition so it waits for the event to spawn
-        // This value is hardcoded based on the "roll finishing" anim
-        yield return new WaitForSecondsRealtime(1.8f);
-        PickEffect();
-        Debug.Log("Can roll dice again");
+        // These values are hardcoded based on the "roll finishing" anim
+        // and other timings. DO NOT CHANGE.
+        yield return new WaitForSecondsRealtime(1.9f);
+        ToggleParticles(neutrality, true);
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        // spawn icon
+        effectSprite.sprite = effect.diceSprite;
+        effectSprite.enabled = true;
+        effect.numberOfTimesRolled++;
+        if (effect.scoresPoints)
+        {
+            score += effect.numberOfPoints;
+            scoreText.text = "Points: " + score;
+        }
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        SpawnEffect(i);
+        ToggleParticles(neutrality, false);
+
+        yield return new WaitForSecondsRealtime(2f);
         isDiceRolling = false;
     }
-     
-    void PickEffect()
+
+    void ToggleParticles(int neutrality, bool on)
     {
-        int i = UnityEngine.Random.Range(0, effectSprites.Length);
-        effectSprite.enabled = true;
-        effectSprite.sprite = effectSprites[i];
+        GameObject ps = neutralParticles;
+        switch (neutrality)
+        {
+            default:
+                // true neutral
+                // ps is already set, dont need to do anything
+                break;
+            case 1:
+                // good
+                ps = goodParticles;
+                break;
+            case 2:
+                // bad
+                break;
+        }
+
+        if (on)
+        {
+            ps.SetActive(true);
+        }
+        else
+        {
+            ps.SetActive(false);
+        }
+    }
+
+    void SpawnEffect(int i)
+    {
+        effects[i].SetActive(true);
     }
 
     // Required for the input system.

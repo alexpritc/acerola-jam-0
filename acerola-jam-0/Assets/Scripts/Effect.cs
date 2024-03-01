@@ -15,4 +15,17 @@ public class Effect : MonoBehaviour
     /// 2 = bad
     /// </summary>
     public int neutrality = 0;
+
+    private AudioSource audioSource;
+
+    public AudioClip spawnNoise;
+    public AudioClip idleNoise;
+
+    private void Awake()
+    {
+        
+    }
+
+    
+
 }

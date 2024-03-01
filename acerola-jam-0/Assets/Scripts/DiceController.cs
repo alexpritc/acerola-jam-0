@@ -17,9 +17,11 @@ public class DiceController : MonoBehaviour
     [SerializeField] private GameObject goodParticles;
     [SerializeField] private GameObject neutralParticles;
 
-
     public TextMeshProUGUI scoreText;
     private int score = 0;
+
+    private Effect effect;
+    private int effectIndex;
 
     void Awake()
     {
@@ -54,31 +56,22 @@ public class DiceController : MonoBehaviour
     IEnumerator CanRollDiceAgain()
     {
         // Choose effect
-        int i = UnityEngine.Random.Range(0, effects.Length);
-        Effect effect = effects[i].GetComponent<Effect>();
-        int neutrality = effect.neutrality;
-    
-        // TODO: add another condition so it waits for the event to spawn
+        PickEffect();
+   
         // These values are hardcoded based on the "roll finishing" anim
         // and other timings. DO NOT CHANGE.
         yield return new WaitForSecondsRealtime(1.9f);
-        ToggleParticles(neutrality, true);
+
+        ToggleParticles(effect.neutrality, true);
+
         yield return new WaitForSecondsRealtime(0.2f);
 
-        // spawn icon
-        effectSprite.sprite = effect.diceSprite;
-        effectSprite.enabled = true;
-        effect.numberOfTimesRolled++;
-        if (effect.scoresPoints)
-        {
-            score += effect.numberOfPoints;
-            scoreText.text = "Points: " + score;
-        }
+        ShowIcon();
 
         yield return new WaitForSecondsRealtime(3f);
 
-        SpawnEffect(i);
-        ToggleParticles(neutrality, false);
+        SpawnEffect();
+        ToggleParticles(effect.neutrality, false);
 
         yield return new WaitForSecondsRealtime(2f);
         isDiceRolling = false;
@@ -112,9 +105,28 @@ public class DiceController : MonoBehaviour
         }
     }
 
-    void SpawnEffect(int i)
+    private void PickEffect()
     {
-        effects[i].SetActive(true);
+        // Choose effect
+        effectIndex = UnityEngine.Random.Range(0, effects.Length);
+        effect = effects[effectIndex].GetComponent<Effect>();
+    }
+
+    private void ShowIcon()
+    {
+        effectSprite.sprite = effect.diceSprite;
+        effectSprite.enabled = true;
+        effect.numberOfTimesRolled++;
+        if (effect.scoresPoints)
+        {
+            score += effect.numberOfPoints;
+            scoreText.text = "Points: " + score;
+        }
+    }
+
+    void SpawnEffect()
+    {
+        effects[effectIndex].SetActive(true);
     }
 
     // Required for the input system.

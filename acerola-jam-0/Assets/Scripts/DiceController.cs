@@ -132,10 +132,11 @@ public class DiceController : MonoBehaviour
         {
             // play their spawn noise
         }
-        if (effect.scoresPoints)
+
+        if (effect.neutrality != 3)
         {
-            score += effect.numberOfPoints;
-            scoreText.text = "Points: " + score;
+            score++;
+            scoreText.text = score.ToString();
         }
     }
 

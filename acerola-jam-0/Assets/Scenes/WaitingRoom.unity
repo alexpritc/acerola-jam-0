@@ -153,8 +153,8 @@ Transform:
   m_GameObject: {fileID: 16896485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91, y: -0.43, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: -5.88, y: -1.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1899709955}
@@ -540,8 +540,8 @@ Transform:
   m_GameObject: {fileID: 20607160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.67, y: -0.48, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0.67, y: -1.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 967499027}
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hey thanks for coming with me to my GIC appointment...
+  m_text: Hey thanks for coming with me to the gender identity clinic
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125d89cd1df99054b8620b57e77e8123, type: 2}
   m_sharedMaterial: {fileID: -2568009961758311306, guid: 125d89cd1df99054b8620b57e77e8123, type: 2}
@@ -17329,7 +17329,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -7
+  m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: e4198e81a7ef4734d85f45d86e2ea32e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

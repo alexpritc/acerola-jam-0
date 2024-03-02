@@ -135,8 +135,8 @@ public class DiceController : MonoBehaviour
 
         if (effect.neutrality != 3)
         {
-            score++;
-            scoreText.text = score.ToString();
+            GameManager.Instance.Score++;
+            scoreText.text = GameManager.Instance.Score.ToString();
         }
     }
 

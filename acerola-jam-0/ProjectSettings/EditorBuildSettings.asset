@@ -8,4 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaitingRoom.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: f1f2922731d708e42a76b186ee671c8f
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 5ed3085fdc3af2f4ea38ddcf4ed2ac9b, type: 2}

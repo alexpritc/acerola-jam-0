@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public bool OnePhysical { get; set; }
 
+    public int Score { get; set; }
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
             Gravity = false;
             OnePhysical = false;
         }
@@ -36,6 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("WaitingRoom");
+        SceneManager.LoadScene("Leaderboard");
     }
 }

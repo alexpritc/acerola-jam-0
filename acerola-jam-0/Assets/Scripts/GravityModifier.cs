@@ -7,7 +7,7 @@ public class GravityModifier : MonoBehaviour
     private bool flying;
     private Animator animator;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.Instance.OnePhysical = true;
         animator = GetComponent<Animator>();

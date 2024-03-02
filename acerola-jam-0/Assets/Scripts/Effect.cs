@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    public string name;
+    public string effectName;
     public Sprite diceSprite;
     public int numberOfTimesRolled = 0;
     public bool scoresPoints = false;

@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 
 public class DiceController : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class DiceController : MonoBehaviour
     private Effect effect;
     private int effectIndex;
 
-    void Awake()
+    [SerializeField]
+    private PostProcessVolume cameraEffects;
+
+   void Awake()
     {
         animator = GetComponent<Animator>();
         controller = new Controls();
@@ -112,14 +116,19 @@ public class DiceController : MonoBehaviour
         // Choose effect
         effectIndex = UnityEngine.Random.Range(0, effects.Length);
         effect = effects[effectIndex].GetComponent<Effect>();
-        
-        // Only pick gravity if an item affected by gravity is on
-        if (effect.name == "Zero Gravity" && !GameManager.Instance.OnePhysical)
+
+        // one and done
+        if (effect.numberOfTimesRolled >= 1 && effect.neutrality != 1)
+        {
+            PickEffect();
+        }
+        // Don't blow up on roll 1
+        else if (GameManager.Instance.Score == 0 && effect.neutrality == 2)
         {
             PickEffect();
         }
 
-        eventText.text = effect.name;
+        eventText.text = effect.effectName;
         eventText.gameObject.SetActive(true);
     }
 
@@ -128,14 +137,14 @@ public class DiceController : MonoBehaviour
         effectSprite.sprite = effect.diceSprite;
         effectSprite.enabled = true;
         effect.numberOfTimesRolled++;
-        if (effect.numberOfTimesRolled > 1)
-        {
-            // play their spawn noise
-        }
 
-        if (effect.neutrality != 3)
+        if (effect.neutrality != 2)
         {
             GameManager.Instance.Score++;
+            if (effect.neutrality == 1)
+            {
+                GameManager.Instance.Score += 9; // Stars are worth 10 points
+            }
             scoreText.text = GameManager.Instance.Score.ToString();
         }
     }
@@ -143,6 +152,30 @@ public class DiceController : MonoBehaviour
     void SpawnEffect()
     {
         effects[effectIndex].SetActive(true);
+        if (effect.effectName == "Vignette")
+        {
+            Vignette vignette;
+            cameraEffects.profile.TryGetSettings(out vignette);
+            vignette.active = true;
+        }
+        else if (effect.effectName == "Grain")
+        {
+            Grain grain;
+            cameraEffects.profile.TryGetSettings(out grain);
+            grain.active = true;
+        }
+        else if (effect.effectName == "Lens Distortion")
+        {
+            LensDistortion lensDistortion;
+            cameraEffects.profile.TryGetSettings(out lensDistortion);
+            lensDistortion.active = true;
+        }
+        else if (effect.effectName == "Color Grading")
+        {
+            ColorGrading colorGrading;
+            cameraEffects.profile.TryGetSettings(out colorGrading);
+            colorGrading.active = true;
+        }
     }
 
     // Required for the input system.

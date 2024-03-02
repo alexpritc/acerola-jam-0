@@ -113,12 +113,8 @@ public class DiceController : MonoBehaviour
         effectIndex = UnityEngine.Random.Range(0, effects.Length);
         effect = effects[effectIndex].GetComponent<Effect>();
         
-        if (effect.numberOfTimesRolled >= 1 && (!effect.scoresPoints && 
-            !effect.endsGame))
-        {
-            PickEffect();
-        }
-        else if (effect.name == "Zero Gravity" && !GameManager.Instance.OnePhysical)
+        // Only pick gravity if an item affected by gravity is on
+        if (effect.name == "Zero Gravity" && !GameManager.Instance.OnePhysical)
         {
             PickEffect();
         }
@@ -132,6 +128,10 @@ public class DiceController : MonoBehaviour
         effectSprite.sprite = effect.diceSprite;
         effectSprite.enabled = true;
         effect.numberOfTimesRolled++;
+        if (effect.numberOfTimesRolled > 1)
+        {
+            // play their spawn noise
+        }
         if (effect.scoresPoints)
         {
             score += effect.numberOfPoints;

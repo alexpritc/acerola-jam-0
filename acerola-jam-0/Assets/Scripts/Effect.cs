@@ -21,4 +21,20 @@ public class Effect : MonoBehaviour
 
     public AudioClip spawnNoise;
     public AudioClip idleNoise;
+
+    private void Awake()
+    {
+        if (endsGame)
+        {
+            // end game
+            StartCoroutine(EndGame());
+        }
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        GameManager.Instance.EndGame();
+    }
 }

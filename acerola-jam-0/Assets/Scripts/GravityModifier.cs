@@ -19,7 +19,7 @@ public class GravityModifier : MonoBehaviour
         if (GameManager.Instance.Gravity
              && !flying)
         {
-            animator.Play("fly");
+            animator.SetBool("IsFlying", true);
             flying = true;
         }
     }

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            Gravity = false;
+            OnePhysical = false;
         }
 
         AudioManager = GetComponentInChildren<AudioManager>();

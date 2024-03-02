@@ -134,8 +134,10 @@ GameObject:
   - component: {fileID: 16896486}
   - component: {fileID: 16896487}
   - component: {fileID: 16896488}
-  - component: {fileID: 16896489}
+  - component: {fileID: 16896493}
   - component: {fileID: 16896490}
+  - component: {fileID: 16896491}
+  - component: {fileID: 16896492}
   m_Layer: 0
   m_Name: Rat King
   m_TagString: Untagged
@@ -232,26 +234,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &16896489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16896485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f94e2b2cf2a0d4b8d0456344437294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: The Rat King
-  diceSprite: {fileID: 21300000, guid: 01470864124de3443bbd5679b3854d98, type: 3}
-  numberOfTimesRolled: 0
-  scoresPoints: 0
-  numberOfPoints: 10
-  neutrality: 0
-  spawnNoise: {fileID: 0}
-  idleNoise: {fileID: 0}
 --- !u!82 &16896490
 AudioSource:
   m_ObjectHideFlags: 0
@@ -348,6 +330,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &16896491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16896485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39803e565520d5f449b387cb7f7d9d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: The Rat King
+  diceSprite: {fileID: 21300000, guid: 01470864124de3443bbd5679b3854d98, type: 3}
+  numberOfTimesRolled: 0
+  scoresPoints: 0
+  numberOfPoints: 10
+  neutrality: 0
+  audioSource: {fileID: 0}
+  spawnNoise: {fileID: 0}
+  idleNoise: {fileID: 0}
+  ps: {fileID: 0}
+  flying: 0
+  animator: {fileID: 0}
+--- !u!114 &16896492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16896485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f94e2b2cf2a0d4b8d0456344437294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  diceSprite: {fileID: 21300000, guid: 01470864124de3443bbd5679b3854d98, type: 3}
+  numberOfTimesRolled: 0
+  scoresPoints: 0
+  numberOfPoints: 10
+  neutrality: 0
+  spawnNoise: {fileID: 0}
+  idleNoise: {fileID: 0}
+  isPhyiscal: 1
+--- !u!114 &16896493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16896485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2be0f794acd66942b2eb5b5342bb66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &20607160
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,9 +397,10 @@ GameObject:
   m_Component:
   - component: {fileID: 20607165}
   - component: {fileID: 20607164}
-  - component: {fileID: 20607162}
   - component: {fileID: 20607161}
   - component: {fileID: 20607166}
+  - component: {fileID: 20607168}
+  - component: {fileID: 20607167}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -464,26 +504,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &20607162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20607160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f94e2b2cf2a0d4b8d0456344437294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Gelatinous Cube
-  diceSprite: {fileID: 21300000, guid: d6fc840bc1240f04eb4563a3a615ab4d, type: 3}
-  numberOfTimesRolled: 0
-  scoresPoints: 0
-  numberOfPoints: 10
-  neutrality: 0
-  spawnNoise: {fileID: 0}
-  idleNoise: {fileID: 0}
 --- !u!212 &20607164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,6 +593,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &20607167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20607160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f94e2b2cf2a0d4b8d0456344437294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Skimey
+  diceSprite: {fileID: 21300000, guid: d6fc840bc1240f04eb4563a3a615ab4d, type: 3}
+  numberOfTimesRolled: 0
+  scoresPoints: 0
+  numberOfPoints: 10
+  neutrality: 0
+  spawnNoise: {fileID: 0}
+  idleNoise: {fileID: 0}
+  isPhyiscal: 1
+--- !u!114 &20607168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20607160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2be0f794acd66942b2eb5b5342bb66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &79176755
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,6 +5674,59 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &509054703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509054705}
+  - component: {fileID: 509054706}
+  m_Layer: 0
+  m_Name: Gravity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &509054705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509054703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509054706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509054703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7cfa8fed1365c4bb3fb1bbd1732685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Zero Gravity
+  diceSprite: {fileID: 21300000, guid: e9304f851cf128d47a48f636b7fa1405, type: 3}
+  numberOfTimesRolled: 0
+  scoresPoints: 0
+  numberOfPoints: 10
+  neutrality: 0
+  spawnNoise: {fileID: 0}
+  idleNoise: {fileID: 0}
+  isPhyiscal: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +6052,7 @@ MonoBehaviour:
   - {fileID: 2066073761}
   - {fileID: 16896485}
   - {fileID: 20607160}
+  - {fileID: 509054703}
   goodParticles: {fileID: 921303296}
   neutralParticles: {fileID: 353688679}
   scoreText: {fileID: 79176757}
@@ -15717,7 +15824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &967499027
 Transform:
   m_ObjectHideFlags: 0
@@ -16288,7 +16395,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2054228485}
   - component: {fileID: 2054228484}
-  - component: {fileID: 2054228483}
   - component: {fileID: 2054228482}
   m_Layer: 0
   m_Name: Eyes
@@ -16318,23 +16424,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2054228483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054228481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc414a4f9db85c47a4c80475189dc8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectSprite: {fileID: 0}
-  effects: []
-  goodParticles: {fileID: 0}
-  neutralParticles: {fileID: 0}
-  scoreText: {fileID: 0}
 --- !u!212 &2054228484
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16412,7 +16501,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2066073765}
   - component: {fileID: 2066073764}
-  - component: {fileID: 2066073763}
   - component: {fileID: 2066073762}
   - component: {fileID: 2066073766}
   - component: {fileID: 2066073767}
@@ -16422,7 +16510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2066073762
 Animator:
   serializedVersion: 5
@@ -16444,23 +16532,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2066073763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066073761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc414a4f9db85c47a4c80475189dc8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectSprite: {fileID: 0}
-  effects: []
-  goodParticles: {fileID: 0}
-  neutralParticles: {fileID: 0}
-  scoreText: {fileID: 0}
 --- !u!212 &2066073764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16549,6 +16620,7 @@ MonoBehaviour:
   neutrality: 0
   spawnNoise: {fileID: 0}
   idleNoise: {fileID: 0}
+  isPhyiscal: 1
 --- !u!82 &2066073767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16683,6 +16755,7 @@ MonoBehaviour:
   neutrality: 1
   spawnNoise: {fileID: 0}
   idleNoise: {fileID: 0}
+  isPhyiscal: 0
 --- !u!4 &2134470961
 Transform:
   m_ObjectHideFlags: 0
@@ -16809,5 +16882,6 @@ SceneRoots:
   - {fileID: 16896486}
   - {fileID: 20607165}
   - {fileID: 2134470961}
+  - {fileID: 509054705}
   - {fileID: 776667114}
   - {fileID: 1751028150}

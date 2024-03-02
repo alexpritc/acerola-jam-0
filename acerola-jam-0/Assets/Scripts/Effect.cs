@@ -20,12 +20,4 @@ public class Effect : MonoBehaviour
 
     public AudioClip spawnNoise;
     public AudioClip idleNoise;
-
-    private void Awake()
-    {
-        
-    }
-
-    
-
 }

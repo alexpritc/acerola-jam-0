@@ -117,6 +117,10 @@ public class DiceController : MonoBehaviour
         effectSprite.sprite = effect.diceSprite;
         effectSprite.enabled = true;
         effect.numberOfTimesRolled++;
+        if (effect.numberOfTimesRolled > 1)
+        {
+            effect.TurnOnParticle();
+        }
         if (effect.scoresPoints)
         {
             score += effect.numberOfPoints;

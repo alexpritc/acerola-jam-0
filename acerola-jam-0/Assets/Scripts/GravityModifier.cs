@@ -9,6 +9,7 @@ public class GravityModifier : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance.OnePhysical = true;
         animator = GetComponent<Animator>();
     }
 

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public bool Gravity { get; set; }
 
+    public bool OnePhysical { get; set; }
+
     // Start is called before the first frame update
     private void Awake()
     {

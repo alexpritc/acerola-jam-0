@@ -9,10 +9,4 @@ public class ZeroGravity : Effect
     {
         GameManager.Instance.Gravity = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -17,6 +17,7 @@ public class DiceController : MonoBehaviour
     [SerializeField] private GameObject goodParticles;
     [SerializeField] private GameObject neutralParticles;
 
+    public TextMeshProUGUI eventText;
     public TextMeshProUGUI scoreText;
     private int score = 0;
 
@@ -73,8 +74,9 @@ public class DiceController : MonoBehaviour
         SpawnEffect();
         ToggleParticles(effect.neutrality, false);
 
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.5f);
         isDiceRolling = false;
+        eventText.gameObject.SetActive(false);
     }
 
     void ToggleParticles(int neutrality, bool on)
@@ -110,6 +112,19 @@ public class DiceController : MonoBehaviour
         // Choose effect
         effectIndex = UnityEngine.Random.Range(0, effects.Length);
         effect = effects[effectIndex].GetComponent<Effect>();
+        
+        if (effect.numberOfTimesRolled >= 1 && (!effect.scoresPoints && 
+            !effect.endsGame))
+        {
+            PickEffect();
+        }
+        else if (effect.name == "Zero Gravity" && !GameManager.Instance.OnePhysical)
+        {
+            PickEffect();
+        }
+
+        eventText.text = effect.name;
+        eventText.gameObject.SetActive(true);
     }
 
     private void ShowIcon()
@@ -117,10 +132,6 @@ public class DiceController : MonoBehaviour
         effectSprite.sprite = effect.diceSprite;
         effectSprite.enabled = true;
         effect.numberOfTimesRolled++;
-        if (effect.numberOfTimesRolled > 1)
-        {
-            effect.TurnOnParticle();
-        }
         if (effect.scoresPoints)
         {
             score += effect.numberOfPoints;

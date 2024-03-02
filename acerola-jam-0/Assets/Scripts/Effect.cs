@@ -8,6 +8,7 @@ public class Effect : MonoBehaviour
     public Sprite diceSprite;
     public int numberOfTimesRolled = 0;
     public bool scoresPoints = false;
+    public bool endsGame = false;
     public int numberOfPoints = 10;
     /// <summary>
     /// 0 = neutral,

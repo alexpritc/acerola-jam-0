@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leaderboard.unity
     guid: f1f2922731d708e42a76b186ee671c8f
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 8d8caa8ad25f7cc4bae79231366b189e
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: 84cd9f832fda87c438331d70844c4432
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5ed3085fdc3af2f4ea38ddcf4ed2ac9b, type: 2}

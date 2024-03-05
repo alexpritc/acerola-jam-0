@@ -23,8 +23,8 @@ public class CircleBar2DController : MonoBehaviour
     {
         fill.GetComponent<SpriteRenderer>().color = fillColor;
         controller = new Controls();
-        controller.Player.Space.performed += ctx => { if (fillImmediately) { FillImmediate(); } else { moveForward = true; } };
-        controller.Player.Space.canceled += ctx => { if (fillImmediately) { ClearImmediate(); } else { moveForward = false; ; } };
+        controller.Player.SpaceTap.performed += ctx => { if (fillImmediately) { FillImmediate(); } else { moveForward = true; } };
+        controller.Player.SpaceTap.canceled += ctx => { if (fillImmediately) { ClearImmediate(); } else { moveForward = false; ; } };
     }
 
     void FillImmediate()

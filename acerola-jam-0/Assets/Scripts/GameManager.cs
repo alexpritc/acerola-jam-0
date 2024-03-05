@@ -11,10 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
     public AudioManager AudioManager { get; private set; }
 
-    public bool Gravity { get; set; }
-
-    public bool OnePhysical { get; set; }
-
     public int Score { get; set; }
 
     // Start is called before the first frame update
@@ -24,14 +20,12 @@ public class GameManager : MonoBehaviour
 
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            Gravity = false;
-            OnePhysical = false;
         }
 
         AudioManager = GetComponentInChildren<AudioManager>();
@@ -40,5 +34,15 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         SceneManager.LoadScene("Leaderboard");
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

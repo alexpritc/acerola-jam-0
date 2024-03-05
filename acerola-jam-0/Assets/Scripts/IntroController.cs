@@ -13,7 +13,7 @@ public class IntroController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         controller = new Controls();
-        controller.Player.Space.performed += ctx => SkipAnim();
+        controller.Player.SpaceTap.performed += ctx => SkipAnim();
     }
 
     void SkipAnim()

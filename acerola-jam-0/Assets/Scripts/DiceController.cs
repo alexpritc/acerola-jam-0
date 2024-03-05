@@ -32,11 +32,11 @@ public class DiceController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         controller = new Controls();
-        controller.Player.Space.performed += ctx => SpinDice();
-        controller.Player.Space.canceled += ctx => RollDice();
+        //controller.Player.SpaceHold.performed += ctx => SpinDice();
+        //controller.Player.SpaceHold.canceled += ctx => RollDice();
     }
 
-    private void SpinDice()
+    public void SpinDice()
     {
         // We don't want to let the player roll the dice unlimited times back-to-back
         if (isDiceRolling)

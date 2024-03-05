@@ -7,6 +7,6 @@ public class ZeroGravity : Effect
     // Start is called before the first frame update
     void Awake()
     {
-        GameManager.Instance.Gravity = true;
+        //GameManager.Instance.Gravity = true;
     }
 }

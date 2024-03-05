@@ -6,9 +6,27 @@
             "id": "805c39ca-d314-44f8-8aaa-3778877c218f",
             "actions": [
                 {
-                    "name": "Space",
+                    "name": "SpaceTap",
                     "type": "Button",
                     "id": "65315a19-8c02-431d-b2d2-98f2633c3c50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpaceHold",
+                    "type": "Button",
+                    "id": "fa582eec-f816-4abe-be30-a2545a15ab1f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpaceSpam",
+                    "type": "Button",
+                    "id": "cb4970ea-f08d-4e00-9a82-fe36f1f2d781",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -20,10 +38,32 @@
                     "name": "",
                     "id": "4af0a2f4-0508-4b4d-bc88-24b673a80882",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "",
-                    "action": "Space",
+                    "action": "SpaceTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e09a0b1f-a6d7-4149-9044-d402ec25b1b1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpaceHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7eb66d85-e1ac-461c-8cbb-1894ff996eea",
+                    "path": "<Keyboard>/space",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpaceSpam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

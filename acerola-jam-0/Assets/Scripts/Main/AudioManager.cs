@@ -19,9 +19,9 @@ public class AudioManager : MonoBehaviour
 
     void UpdateVolumes()
     {
-        mixer.SetFloat("masterVol", masterVol);
-        mixer.SetFloat("musicVol", musicVol);
-        mixer.SetFloat("sfxVol", sfxVol);
+        mixer.SetFloat("MasterVol", masterVol);
+        mixer.SetFloat("MusicVol", musicVol);
+        mixer.SetFloat("SFXVol", sfxVol);
     }
 
     public void UpdateMasterVolume()

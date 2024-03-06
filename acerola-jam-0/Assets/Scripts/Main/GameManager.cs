@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; set; }
 
+    public int DiceIndex = -2;
+    public bool IsDiceScene = false;
+
+    public Color32[] colorPalettes;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -38,11 +43,48 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        if (sceneName == "Dice")
+        {
+            IsDiceScene = true;
+            DiceIndex += 2;
+        }
+        else
+        {
+            IsDiceScene = false;
+
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenLink()
+    {
+        Debug.Log("Open URL");
+    }
+
+    public string NextSceneCalculator()
+    {
+        string nextLevel = "";
+
+        switch (DiceIndex)
+        {
+            case 0:
+                nextLevel = "Eyes";
+                break;
+            case 2:
+                nextLevel = "WaitingRoom";
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+
+        return nextLevel;
     }
 }

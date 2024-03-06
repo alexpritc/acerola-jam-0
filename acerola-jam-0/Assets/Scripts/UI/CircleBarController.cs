@@ -24,7 +24,21 @@ public class CircleBarController : MonoBehaviour
 
     void Awake()
     {
-        fill.GetComponent<MeshRenderer>().material.color = fillColor;
+        Debug.Log(GameManager.Instance.DiceIndex);
+        if (GameManager.Instance.IsDiceScene)
+        {
+            fill.GetComponent<MeshRenderer>().material.color = GameManager.Instance.colorPalettes[GameManager.Instance.DiceIndex + 1];
+            foreach (var slider in GetComponentsInChildren<SpriteRenderer>())
+            {
+                slider.color = GameManager.Instance.colorPalettes[GameManager.Instance.DiceIndex];
+            }
+        }
+        else
+        {
+            fill.GetComponent<MeshRenderer>().material.color = fillColor;
+
+        }
+
         controller = new Controls();
         controller.Player.SpaceHold.performed += ctx => moveForward = true;
         controller.Player.SpaceHold.canceled += ctx => moveForward = false;
@@ -47,12 +61,12 @@ public class CircleBarController : MonoBehaviour
         }
     }
 
-    bool atStart()
+    public bool atStart()
     {
         return fill.transform.position.z >= startPos.z;
     }
 
-    private bool atEnd()
+    public bool atEnd()
     {
         bool end = fill.transform.position.z <= endPos.z;
         if (end && !hasButtonEventFired)

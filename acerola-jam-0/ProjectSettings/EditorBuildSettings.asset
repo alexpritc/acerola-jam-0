@@ -6,16 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WaitingRoom.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Leaderboard.unity
-    guid: f1f2922731d708e42a76b186ee671c8f
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 8d8caa8ad25f7cc4bae79231366b189e
+    path: Assets/Scenes/MainMenu.unity
+    guid: e6165ff21d4e60b40a1b7f9207e6898f
   - enabled: 1
     path: Assets/Scenes/Controls.unity
-    guid: 84cd9f832fda87c438331d70844c4432
+    guid: 43d6dc62d91a5294c9b8e99b0ea329aa
+  - enabled: 1
+    path: Assets/Scenes/Dice.unity
+    guid: 293444e343751414a9f313da98fce1fa
+  - enabled: 1
+    path: Assets/Scenes/Eyes.unity
+    guid: 6edbae2ea9ccb524da5d2102c05f36ab
+  - enabled: 1
+    path: Assets/Scenes/WaitingRoom.unity
+    guid: 6e41a17b5f8006d40b8cf5a917f5b457
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5ed3085fdc3af2f4ea38ddcf4ed2ac9b, type: 2}

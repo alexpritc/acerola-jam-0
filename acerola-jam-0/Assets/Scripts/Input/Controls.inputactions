@@ -38,7 +38,7 @@
                     "name": "",
                     "id": "4af0a2f4-0508-4b4d-bc88-24b673a80882",
                     "path": "<Keyboard>/space",
-                    "interactions": "Tap(duration=0.4)",
+                    "interactions": "Tap(duration=0.5)",
                     "processors": "",
                     "groups": "",
                     "action": "SpaceTap",

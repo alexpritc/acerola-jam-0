@@ -16,6 +16,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Color32 disabledColor;
     [SerializeField] Color32 enabledColor;
 
+    [SerializeField] int disabledLayer = -1;
+    [SerializeField] int enabledLayer = 1;
+
     private void Start()
     {
         selectedButton = buttons[buttonIndex];
@@ -30,6 +33,9 @@ public class MainMenuManager : MonoBehaviour
 
     void NextButton()
     {
+        if (buttons.Length <= 1)
+            return;
+
         buttonIndex++;
         if (buttonIndex >= buttons.Length)
         {
@@ -43,13 +49,13 @@ public class MainMenuManager : MonoBehaviour
     {
         foreach (var button in buttons)
         {
-            button.gameObject.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            button.gameObject.GetComponent<SpriteRenderer>().sortingOrder = disabledLayer;
             button.enabled = false;
             button.fill.transform.localPosition = button.startPos;
             button.gameObject.GetComponent<SpriteRenderer>().color = disabledColor;
         }
 
-        selectedButton.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        selectedButton.gameObject.GetComponent<SpriteRenderer>().sortingOrder = enabledLayer;
         selectedButton.enabled = true;
         selectedButton.gameObject.GetComponent<SpriteRenderer>().color = enabledColor;
 

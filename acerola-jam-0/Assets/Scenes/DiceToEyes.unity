@@ -753,8 +753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ef58c600988764285841d61a9da9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectSprite: {fileID: 1626767424}
-  nextScene: Eyes
+  effectSpriteRenderer: {fileID: 0}
+  effectSprites: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

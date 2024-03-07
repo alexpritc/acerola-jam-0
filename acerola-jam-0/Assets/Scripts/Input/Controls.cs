@@ -44,23 +44,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SpaceSpam"",
-                    ""type"": ""Button"",
-                    ""id"": ""cb4970ea-f08d-4e00-9a82-fe36f1f2d781"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4af0a2f4-0508-4b4d-bc88-24b673a80882"",
+                    ""id"": ""e4c15702-a61b-447b-b601-2f06a85cef5c"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Tap(duration=0.5)"",
+                    ""interactions"": ""Tap(duration=0.4)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SpaceTap"",
@@ -77,17 +68,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SpaceHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7eb66d85-e1ac-461c-8cbb-1894ff996eea"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""MultiTap"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpaceSpam"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -98,7 +78,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_SpaceTap = m_Player.FindAction("SpaceTap", throwIfNotFound: true);
         m_Player_SpaceHold = m_Player.FindAction("SpaceHold", throwIfNotFound: true);
-        m_Player_SpaceSpam = m_Player.FindAction("SpaceSpam", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,14 +141,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_SpaceTap;
     private readonly InputAction m_Player_SpaceHold;
-    private readonly InputAction m_Player_SpaceSpam;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @SpaceTap => m_Wrapper.m_Player_SpaceTap;
         public InputAction @SpaceHold => m_Wrapper.m_Player_SpaceHold;
-        public InputAction @SpaceSpam => m_Wrapper.m_Player_SpaceSpam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -185,9 +162,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpaceHold.started += instance.OnSpaceHold;
             @SpaceHold.performed += instance.OnSpaceHold;
             @SpaceHold.canceled += instance.OnSpaceHold;
-            @SpaceSpam.started += instance.OnSpaceSpam;
-            @SpaceSpam.performed += instance.OnSpaceSpam;
-            @SpaceSpam.canceled += instance.OnSpaceSpam;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -198,9 +172,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpaceHold.started -= instance.OnSpaceHold;
             @SpaceHold.performed -= instance.OnSpaceHold;
             @SpaceHold.canceled -= instance.OnSpaceHold;
-            @SpaceSpam.started -= instance.OnSpaceSpam;
-            @SpaceSpam.performed -= instance.OnSpaceSpam;
-            @SpaceSpam.canceled -= instance.OnSpaceSpam;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -222,6 +193,5 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnSpaceTap(InputAction.CallbackContext context);
         void OnSpaceHold(InputAction.CallbackContext context);
-        void OnSpaceSpam(InputAction.CallbackContext context);
     }
 }

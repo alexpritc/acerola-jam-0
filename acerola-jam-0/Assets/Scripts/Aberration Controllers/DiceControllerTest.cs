@@ -28,11 +28,11 @@ public class DiceControllerTest : MonoBehaviour
     {
         // These values are hardcoded based on the "roll finishing" anim
         // and other timings. DO NOT CHANGE.
-        yield return new WaitForSecondsRealtime(2.75f);
+        yield return new WaitForSecondsRealtime(4f);
 
         ShowIcon();
 
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         GameManager.Instance.LoadScene(GameManager.Instance.NextSceneCalculator());
     }

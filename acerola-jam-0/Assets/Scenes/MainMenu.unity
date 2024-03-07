@@ -2402,8 +2402,8 @@ MonoBehaviour:
   fill: {fileID: 7957565031464081504}
   startPos: {x: 0, y: 0, z: 0.29}
   endPos: {x: 0, y: 0, z: -0.01}
-  stepUp: -0.004
-  stepDown: 0.002
+  stepUp: -0.001
+  stepDown: 0.0005
   fillColor:
     serializedVersion: 2
     rgba: 4286036223

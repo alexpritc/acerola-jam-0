@@ -22,9 +22,25 @@ public class CircleBarController : MonoBehaviour
     public UnityEvent buttonFilled;
     bool hasButtonEventFired;
 
+    public bool triggerMultipleTimes = false;
+
+
+    public bool openLink = false;
+    public string toBeOpened;
+
+    void Start()
+    {
+        if (buttonFilled == null)
+            buttonFilled = new UnityEvent();
+        buttonFilled.AddListener(Open);
+    }
+
     void Awake()
     {
-        Debug.Log(GameManager.Instance.DiceIndex);
+        controller = new Controls();
+        controller.Player.SpaceHold.performed += ctx => moveForward = true;
+        controller.Player.SpaceHold.canceled += ctx => moveForward = false;
+
         if (GameManager.Instance.IsDiceScene)
         {
             fill.GetComponent<MeshRenderer>().material.color = GameManager.Instance.colorPalettes[GameManager.Instance.DiceIndex + 1];
@@ -38,17 +54,23 @@ public class CircleBarController : MonoBehaviour
             fill.GetComponent<MeshRenderer>().material.color = fillColor;
 
         }
-
-        controller = new Controls();
-        controller.Player.SpaceHold.performed += ctx => moveForward = true;
-        controller.Player.SpaceHold.canceled += ctx => moveForward = false;
     }
 
+    void Open()
+    {
+        if (openLink)
+        {
+            Application.OpenURL(toBeOpened);
+        }
+        else{
+            GameManager.Instance.LoadScene(toBeOpened);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (atEnd() && hasButtonEventFired)
+        if (atEnd() && hasButtonEventFired && !triggerMultipleTimes)
             return;
 
         if (moveForward && !atEnd())
@@ -73,9 +95,20 @@ public class CircleBarController : MonoBehaviour
         {
             buttonFilled.Invoke();
             hasButtonEventFired = true;
+            if (triggerMultipleTimes)
+            {
+                Invoke("ResetButton", 0.5f);
+            }
         }
 
         return end;
+    }
+
+
+    void ResetButton()
+    {
+        hasButtonEventFired = false;
+        fill.transform.position = startPos;
     }
 
     void Fill(float zStep)

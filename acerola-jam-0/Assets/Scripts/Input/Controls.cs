@@ -44,6 +44,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpaceSpam"",
+                    ""type"": ""Button"",
+                    ""id"": ""76362a4b-2dce-41ce-b52f-9d829e727bc3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SpaceHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4dc440b-a081-45ac-9e88-439ba642960b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""MultiTap(tapTime=0.25,tapDelay=0.8)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpaceSpam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_SpaceTap = m_Player.FindAction("SpaceTap", throwIfNotFound: true);
         m_Player_SpaceHold = m_Player.FindAction("SpaceHold", throwIfNotFound: true);
+        m_Player_SpaceSpam = m_Player.FindAction("SpaceSpam", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_SpaceTap;
     private readonly InputAction m_Player_SpaceHold;
+    private readonly InputAction m_Player_SpaceSpam;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @SpaceTap => m_Wrapper.m_Player_SpaceTap;
         public InputAction @SpaceHold => m_Wrapper.m_Player_SpaceHold;
+        public InputAction @SpaceSpam => m_Wrapper.m_Player_SpaceSpam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpaceHold.started += instance.OnSpaceHold;
             @SpaceHold.performed += instance.OnSpaceHold;
             @SpaceHold.canceled += instance.OnSpaceHold;
+            @SpaceSpam.started += instance.OnSpaceSpam;
+            @SpaceSpam.performed += instance.OnSpaceSpam;
+            @SpaceSpam.canceled += instance.OnSpaceSpam;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -172,6 +198,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpaceHold.started -= instance.OnSpaceHold;
             @SpaceHold.performed -= instance.OnSpaceHold;
             @SpaceHold.canceled -= instance.OnSpaceHold;
+            @SpaceSpam.started -= instance.OnSpaceSpam;
+            @SpaceSpam.performed -= instance.OnSpaceSpam;
+            @SpaceSpam.canceled -= instance.OnSpaceSpam;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -193,5 +222,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnSpaceTap(InputAction.CallbackContext context);
         void OnSpaceHold(InputAction.CallbackContext context);
+        void OnSpaceSpam(InputAction.CallbackContext context);
     }
 }

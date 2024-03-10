@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpaceSpam",
+                    "type": "Button",
+                    "id": "76362a4b-2dce-41ce-b52f-9d829e727bc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpaceHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4dc440b-a081-45ac-9e88-439ba642960b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "MultiTap(tapTime=0.25,tapDelay=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpaceSpam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -38,7 +38,7 @@ public class WaitingRoomController : MonoBehaviour
  
     void Continue(){
         room.Play("up");
-        Invoke("NextScene", 3f);
+        Invoke("NextScene", 2f);
     }
 
     void Update()

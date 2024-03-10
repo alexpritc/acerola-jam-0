@@ -24,8 +24,6 @@ public class EyesController : MonoBehaviour
 
     public void ToggleEye()
     {
-        Debug.Log("tap");
-
         if (index < eyes.Length)
         {
             // each eye will play their awake anim
@@ -42,7 +40,6 @@ public class EyesController : MonoBehaviour
     public void Blink()
     {
         // all eyes blink 
-        Debug.Log("blink");
         foreach (var e in eyes)
         {
             e.GetComponent<Animator>().Play("blink-2");

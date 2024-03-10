@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public int Score { get; set; }
 
-    public int DiceIndex = -2;
+    public int DiceIndex = -4;
     public bool IsDiceScene = false;
 
     public Color32[] colorPalettes;
@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         // If there is an instance, and it's not me, delete myself.
 
         if (instance != null && instance != this)
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+             DontDestroyOnLoad(gameObject);
         }
 
         AudioManager = GetComponentInChildren<AudioManager>();
@@ -62,9 +64,9 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenLink()
+    public void OpenLink(string url)
     {
-        Debug.Log("Open URL");
+        Application.OpenURL(url);   
     }
 
     public string NextSceneCalculator()
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
                 nextLevel = "WaitingRoom";
                 break;
             case 4:
+                nextLevel = "Rats";
                 break;
             default:
                 break;

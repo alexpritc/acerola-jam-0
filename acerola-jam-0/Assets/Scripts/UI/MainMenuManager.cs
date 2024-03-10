@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
         selectedButton = buttons[buttonIndex];
         EnableButtons();
     }
+
     // Start is called before the first frame update
     void Awake()
     {
